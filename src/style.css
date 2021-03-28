@@ -11,6 +11,7 @@ body,
 
 body {
   background-color: #f8f8f8;
+  margin: 3rem;
 }
 
 .App {
@@ -39,6 +40,7 @@ body {
   outline:none;
   border: 1px solid #666;
   margin-right: 3px;
+  font-family: inherit;
 }
 
 .row-input:focus {

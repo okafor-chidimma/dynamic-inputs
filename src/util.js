@@ -1,7 +1,5 @@
-function swap(list, a, b) {
+export function swap(list, a, b) {
   let temp = list[a]
   list[a] = list[b]
   list[b] = temp
 }
-
-export { swap }
