@@ -4,6 +4,7 @@ import { swap } from './util'
 
 const DynamicInput = props => {
   const [rows, setRows] = useState([])
+  // this'll help target the input with focus
   const [refControlIndex, setrefControlIndex] = useState(-1)
   // refs stores references to all the currently targetable inputs
   const refs = useRef([])
@@ -74,9 +75,6 @@ const DynamicInput = props => {
     // focus might jump elsewhere
     setrefControlIndex(index)
   }
-
-  // swap helper (move to separate, util module)
-  
 
   return (
     <>
