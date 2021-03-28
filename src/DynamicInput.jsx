@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from "react"
 import { v4 as uuid } from "uuid"
-import { swap } from './util'
+import { swap } from "./util"
+import InputRow from "./InputRow"
 
-const DynamicInput = props => {
+const DynamicInput = () => {
   const [rows, setRows] = useState([])
   // this'll help target the input with focus
   const [refControlIndex, setrefControlIndex] = useState(-1)
@@ -82,31 +83,21 @@ const DynamicInput = props => {
       <button className="add-row btn" onClick={handleAddRow}>
         +
       </button>
-
       <section className="row-container">
-        {rows.map((row, i) => (
-          <div key={row.id} className="row">
-            <input
-              type="text"
-              className="row-input"
-              value={row.content}
-              onChange={event => handleInputChange("content", row, i, event)}
-              // ref for a list of inputs on rows
-              ref={el => (refs.current[i] = el)}
+        {rows.map((row, i) => {
+          return (
+            <InputRow
+              key={row.id}
+              refs={refs}
+              handleInputChange={handleInputChange}
+              handleMoveUp={handleMoveUp}
+              handleMoveDown={handleMoveDown}
+              handleDeleteRow={handleDeleteRow}
+              rowsId={i}
+              row={row}
             />
-            <button className="row-up btn" onClick={() => handleMoveUp(row)}>
-              ↑
-            </button>
-            <button className="row-down btn" onClick={() => handleMoveDown(row)}>
-              ↓
-            </button>
-            <button
-              className="row-delete btn"
-              onClick={() => handleDeleteRow(row, i)}>
-              x
-            </button>
-          </div>
-        ))}
+          )
+        })}
       </section>
     </>
   )
