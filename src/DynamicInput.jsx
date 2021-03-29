@@ -6,7 +6,7 @@ import InputRow from "./InputRow"
 const DynamicInput = () => {
   const [rows, setRows] = useState([])
   // this'll help target the input with focus
-  const [refControlIndex, setrefControlIndex] = useState(-1)
+  const [refControlIndex, setRefControlIndex] = useState(-1)
   // refs stores references to all the currently targetable inputs
   const refs = useRef([])
 
@@ -18,16 +18,16 @@ const DynamicInput = () => {
 
   const handleAddRow = () => {
     setRows([...rows, { id: uuid(), content: "" }])
-    setrefControlIndex(rows.length)
+    setRefControlIndex(rows.length)
   }
 
   const handleDeleteRow = (row, rowIndex) => {
     const newRows = rows.filter(r => r.id !== row.id)
     // determining where focus is to go upon deletion of current row
     if (rowIndex === rows.length - 1) {
-      setrefControlIndex(rowIndex - 1)
+      setRefControlIndex(rowIndex - 1)
     } else {
-      setrefControlIndex(rowIndex)
+      setRefControlIndex(rowIndex)
     }
 
     setRows(newRows)
@@ -48,7 +48,7 @@ const DynamicInput = () => {
     swap(list, i, i - 1)
 
     setRows(list)
-    setrefControlIndex(i - 1)
+    setRefControlIndex(i - 1)
   }
 
   const handleMoveDown = row => {
@@ -65,7 +65,7 @@ const DynamicInput = () => {
     swap(list, i, i + 1)
 
     setRows(list)
-    setrefControlIndex(i + 1)
+    setRefControlIndex(i + 1)
   }
 
   const handleInputChange = (key, row, index, event) => {
@@ -74,7 +74,7 @@ const DynamicInput = () => {
     setRows([...rows])
     // make sure to set the change index to this element on input change, else
     // focus might jump elsewhere
-    setrefControlIndex(index)
+    setRefControlIndex(index)
   }
 
   return (
