@@ -17,9 +17,9 @@ Here are the requirements you'll be implementing for the DynamicInput component.
 ### Adding an input field row
 Initially, the component will only offer a single button, `<button class="add-row">`, which, when clicked, will append a new input field to the list of input fields. After clicking this box, focus should be on the newly created input field so the user can begin typing right away. Along with each input field, three corresponding buttons should be created, as described above:
 
-`<button class="row-up">`
-`<button class="row-down">`
-`<button class="row-delete">`
+- `<button class="row-up">`
+- `<button class="row-down">`
+- `<button class="row-delete">`
 
 ### Text input
 The user may enter text into any of the visible `<input class="row-input" />` elements at any time.
