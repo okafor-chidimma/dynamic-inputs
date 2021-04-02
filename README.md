@@ -42,4 +42,4 @@ This demo shows the finished app in action. Note the behavior of focus after eac
 
 ---
 
-![DynamicInputsDemo] (./assets/didemo.gif)
+![Dynamic Inputs Demo](./assets/didemo.gif)
