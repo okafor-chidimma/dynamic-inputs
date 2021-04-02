@@ -35,3 +35,11 @@ Clicking the `<button class="row-down">` button associated with an input field s
 
 ### Style
 Your style and CSS need not be complex. While there is no predetermined correct solution from a stylistic standpoint and logical functionaliy is foremost, please take the time to build a simple interface that offers a reasonable user experience.
+
+---
+# Demo
+This demo shows the finished app in action. Note the behavior of focus after each button operation.
+
+---
+
+[!Dynamic Inputs Demo] (./assets/didemo.gif)
