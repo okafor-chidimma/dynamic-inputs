@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Task
+Oftentimes, when creating forms for web applications, we'd like to offer a dynamic number of input fields for the user. Controls such as adding, removing and reordering these fields can help make the experience of filling out a form or organizing a set of text items intuitive for the user.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+For this challenge, you'll create a simple component DynamicInput which renders the following elements:
 
-## Available Scripts
+<button class="add-row">, an always-available button to append a text field and its corresponding buttons (we'll call this a row henceforth) onto the list of visible fields.
+A list of zero or more rows of input elements and action buttons:
+<input class="row-input" />, which offers the user a place to enter text for the n-th row.
+<button class="row-up">, which enables the n-th row to be moved up (if it's not already at the top of the list).
+<button class="row-down">, which enables the n-th row to be moved down (if it's not already at the bottom of the list).
+<button class="row-delete">, which enables the n-th row to be removed from the list.
+The test suite relies on these class names to manipulate your component.
 
-In the project directory, you can run:
+## Functionality Specifications
+Here are the requirements you'll be implementing for the DynamicInput component. Note that focus (which element is active and ready to accept user input) is an important piece of the specification.
 
-### `yarn start`
+### Adding an input field row
+Initially, the component will only offer a single button, <button class="add-row">, which, when clicked, will append a new input field to the list of input fields. After clicking this box, focus should be on the newly created input field so the user can begin typing right away. Along with each input field, three corresponding buttons should be created, as described above:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<button class="row-up">
+<button class="row-down">
+<button class="row-delete">
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Text input
+The user may enter text into any of the visible <input class="row-input" /> elements at any time.
 
-### `yarn test`
+### Removing an input field row
+Clicking the <button class="row-delete"> button associated with an input field should completely remove that input field, along with any other associated buttons for that field. Focus will move to the input field in the row which replaced the deleted row, nowhere if there are no fields left, or on the new last row if the last row was deleted.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Moving a field row up
+Clicking the <button class="row-up"> button associated with an input field should move that input field one position up in the list (or forward; closer to the beginning of the list). Focus should be placed on the newly moved field after this operation, and all associated buttons should move alongside the element. If a field is already at the top of a list, no reordering should occur, but focus should be transferred to the topmost field nonetheless.
 
-### `yarn build`
+### Moving a field row down
+Clicking the <button class="row-down"> button associated with an input field should move that input field one position down in the list (or backward; closer to the end of the list). Focus should be placed on the newly moved field after this operation, and all associated buttons should move alongside the element. If a field is already at the bottom of a list, no reordering should occur, but focus should be transferred to the bottommost field nonetheless.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Style
+Your style and CSS need not be complex. While there is no predetermined correct solution from a stylistic standpoint and logical functionaliy is foremost, please take the time to build a simple interface that offers a reasonable user experience.
