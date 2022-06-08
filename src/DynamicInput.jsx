@@ -104,3 +104,117 @@ const DynamicInput = () => {
 }
 
 export default DynamicInput
+
+
+
+/*
+//I made a few changes
+import React, { useState, useRef, useEffect } from "react"
+import { swap } from "../lib/util"
+import InputRow from "./InputRow"
+
+const DynamicInput = () => {
+  const [rows, setRows] = useState([])
+  const [index, setIndex] = useState(0)
+  const [refControlIndex, setRefControlIndex] = useState(-1)
+  const refs = useRef([])
+  const indexRef = useRef(0)
+
+  useEffect(() => {
+    if (refs.current[refControlIndex]) {
+      refs.current[refControlIndex].focus()
+    }
+  }, [rows,refControlIndex])
+
+  const handleAddRow = () => {
+    let nIndex = indexRef.current + 1;
+    indexRef.current = nIndex;
+    setIndex(nIndex);
+    setRows([...rows, { id: index, content: "" }])
+    //console.log(rows)
+    setRefControlIndex(rows.length)
+  }
+   const handleDeleteRow = (row, rowIndex) => {
+    const newRows = rows.filter(r => r.id !== row.id)
+    // determining where focus is to go upon deletion of current row
+    if (rowIndex === rows.length - 1) {
+      setRefControlIndex(rowIndex - 1)
+    } else {
+      setRefControlIndex(rowIndex)
+    }
+
+    setRows(newRows)
+  }
+
+  const handleMoveUp = row => {
+    const list = [...rows]
+    console.log(list,row,"up list array")
+    // i index of item to be moved up
+    const i = list.findIndex(item => item.id === row.id)
+    //check if we have the item and can move it up
+    if (i === -1 || i === 0) {
+      //refs.current = [...rows];
+      setRefControlIndex(i);
+      setRows([...rows])
+      return
+    }
+    swap(list, i, i - 1)
+
+    setRows(list)
+    setRefControlIndex(i - 1)
+  }
+
+  const handleMoveDown = row => {
+    const list = [...rows]
+    // index of element to be moved down
+    const i = list.findIndex(item => item.id === row.id)
+
+    if (i === -1 || i === list.length - 1) {
+      console.warn("tried to move last item or absent item down")
+      setRows([...rows])
+      return
+    }
+
+    swap(list, i, i + 1)
+
+    setRows(list)
+    setRefControlIndex(i + 1)
+  }
+
+  const handleInputChange = (key, row, index, event) => {
+    // using the fact that row references an object already in state (rows)
+    row[key] = event.target.value
+    setRows([...rows])
+    // make sure to set the change index to this element on input change, else
+    // focus might jump elsewhere
+    setRefControlIndex(index)
+  }
+  // TODO add your solution here.
+  return (
+    <>
+      <button data-testid="add-row" onClick={handleAddRow}>
+        +
+      </button>
+      <section className="row-container">
+        {rows.map((row, i) => {
+          return (
+            <InputRow
+              key={row.id}
+              refs={refs}
+              handleInputChange={handleInputChange}
+              handleMoveUp={handleMoveUp}
+              handleMoveDown={handleMoveDown}
+              handleDeleteRow={handleDeleteRow}
+              rowsId={i}
+              row={row}
+            />
+          )
+        })}
+      </section>
+    </>
+  );
+};
+export default DynamicInput;
+
+
+*/
